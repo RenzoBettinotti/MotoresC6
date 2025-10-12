@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" ext-uae-inspector-menu="General" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Menu%20Pausa/PauseMenu.uss?fileID=7433441132597879392&amp;guid=7f223dafe2ee7484d9610bc2ae98d3c9&amp;type=3#PauseMenu" />
+    <ui:VisualElement name="pause-menu-container" style="top: 0; bottom: 2px; right: 2px; left: 0;">
+        <ui:Label text="Juego Pausado" name="pause-menu-title" />
+        <ui:VisualElement name="button-group">
+            <ui:Button name="continuar-button" text="Continuar" />
+            <ui:Button name="opciones-button" text="Opciones" />
+            <ui:Button name="salir-button" text="Salir" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

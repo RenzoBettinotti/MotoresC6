@@ -1,0 +1,57 @@
+/* General styles for the main menu background */
+.main-menu-root {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(30, 30, 30); /* Dark, smoky background */
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Style for the game title */
+.game-title {
+    font-size: 80px;
+    -unity-font-style: bold;
+    color: rgb(255, 165, 0); /* Bright orange for the text */
+    
+    /* Corrected properties for the outline effect */
+    -unity-text-outline-width: 5px;
+    -unity-text-outline-color: rgb(200, 50, 0); /* Dark red outline for a fiery look */
+    
+    -unity-text-align: middle-center;
+    margin-bottom: 50px;
+}
+
+/* Container for the menu buttons */
+.button-container {
+    width: 300px;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Base style for all menu buttons */
+.menu-button {
+    background-color: rgb(200, 50, 0); /* Dark red like a fire engine */
+    color: white;
+    font-size: 24px;
+    -unity-font-style: bold;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 50px;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+/* Hover effect for buttons */
+.menu-button:hover {
+    background-color: rgb(255, 165, 0); /* Bright orange on hover */
+    scale: 1.1;
+}
+
+/* Active (click) effect for buttons */
+.menu-button:active {
+    background-color: rgb(150, 40, 0);
+    scale: 0.95;
+}

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=b8a3db703a5c22543b0a97cbdc37d934&amp;type=3#MainMenu" />
+    <ui:VisualElement name="MainMenuRoot" class="main-menu-root">
+        <ui:Label name="GameTitle" text="FIRE JUMPER" class="game-title" />
+        <ui:VisualElement name="ButtonContainer" class="button-container">
+            <ui:Button name="StartButton" text="Comenzar" class="menu-button" />
+            <ui:Button name="OptionsButton" text="Opciones" class="menu-button" />
+            <ui:Button name="QuitButton" text="Salir" class="menu-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

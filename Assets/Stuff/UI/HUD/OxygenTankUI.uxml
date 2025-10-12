@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/HUD/OxygenTankUI.uss?fileID=7433441132597879392&amp;guid=6fdaa208134a9654a967094f7844cd0a&amp;type=3#OxygenTankUI" />
+    <ui:VisualElement name="MainContainer" class="main-container">
+        <ui:VisualElement name="HeartsContainer" class="hearts-container">
+            <ui:Image name="Heart1" class="heart-icon" style="background-image: url(&quot;project://database/Assets/UI/HUD/heart.png?fileID=2800000&amp;guid=df9c4b79dc3db9740b48b6ecb68cb18c&amp;type=3#heart&quot;);" />
+            <ui:Image name="Heart2" class="heart-icon" style="background-image: url(&quot;project://database/Assets/UI/HUD/heart.png?fileID=2800000&amp;guid=df9c4b79dc3db9740b48b6ecb68cb18c&amp;type=3#heart&quot;);" />
+            <ui:Image name="Heart3" class="heart-icon" style="background-image: url(&quot;project://database/Assets/UI/HUD/heart.png?fileID=2800000&amp;guid=df9c4b79dc3db9740b48b6ecb68cb18c&amp;type=3#heart&quot;);" />
+        </ui:VisualElement>
+        <ui:Image name="OxygenTankIcon" class="oxygen-tank-icon" />
+        <ui:VisualElement name="OxygenBarContainer" class="oxygen-bar-container">
+            <ui:VisualElement name="OxygenFillBar" class="oxygen-fill-bar" />
+        </ui:VisualElement>
+        <ui:Label name="OxygenPercentageLabel" text="100%" class="oxygen-percentage-label" />
+    </ui:VisualElement>
+</ui:UXML>

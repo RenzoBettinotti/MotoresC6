@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Defeat/DeathScreen.uss?fileID=7433441132597879392&amp;guid=d98e1fe68df5efd48bfa1dd16088788f&amp;type=3#DeathScreen" />
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/Defeat/FireJumper.jpg?fileID=2800000&amp;guid=d5874c7c0716021488ba07c7165b3fac&amp;type=3#FireJumper&quot;);">
+        <ui:VisualElement name="VisualElement" class="button-container" style="bottom: -59px; left: 960px;">
+            <ui:Button name="MainMenuButton" text="Menu Principal" class="main-menu-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

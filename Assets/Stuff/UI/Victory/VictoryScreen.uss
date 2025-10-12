@@ -1,0 +1,34 @@
+
+.button-container-victory {
+    
+    position: absolute;
+    bottom: 100px; 
+    left: 52%; 
+    width: 350px;
+    height: 60px;
+}
+
+
+.main-menu-button-victory {
+    background-color: rgb(255, 165, 0); 
+    color: white;
+    font-size: 24px;
+    -unity-font-style: bold;
+    border-radius: 10px;
+    height: 100%; 
+    
+   
+    transition-duration: 0.2s; 
+    transition-timing-function: ease-in-out;
+}
+
+.main-menu-button-victory:hover {
+    background-color: rgb(255, 140, 0);
+    scale: 1.05; 
+}
+
+
+.main-menu-button-victory:active {
+    background-color: rgb(200, 100, 0); 
+    scale: 0.95;
+}

@@ -1,0 +1,49 @@
+/* The main container for the pause menu */
+#pause-menu-container {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* The title text style */
+#pause-menu-title {
+    font-size: 50px;
+    -unity-font-style: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* The container for the buttons */
+#button-group {
+    width: 250px;
+    align-items: stretch;
+}
+
+/* The style for all buttons in the menu */
+#button-group > Button {
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: white;
+    background-color: #d32f2f;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Hover state for the buttons */
+#button-group > Button:hover {
+    background-color: #ef5350;
+}
+
+/* Active/click state for the buttons */
+#button-group > Button:active {
+    background-color: #c62828;
+}

@@ -1,20 +1,36 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IHealth
 {
-    int health = 3;
-    float oxygen= 100f;
+
+    float health;
+    float oxygen;
+    public float Health { get { return health; } set { health = value; } }
+    public float Oxygen { get { return oxygen; } set { oxygen = value; } }
     Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         
     }
+
+    void Update() 
+    {
+        if (health == 0)
+        {
+            Death();
+        }
+        else if (oxygen == 0) 
+        {
+            Death();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Smoke")) 
         {
-            oxygen -= 5 * Time.deltaTime;
+            ReduceOxygen(5f);
         }
         
             
@@ -24,8 +40,23 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Fire")) 
         {
-            health -= 1;
+            TakeDamage(1f);
             rb.transform.position = new Vector3(0,0,0);
         }
+    }
+
+
+    public void TakeDamage(float damage) 
+    {
+        health -= damage *Time.deltaTime;
+    }
+    public void ReduceOxygen(float reduction)
+    {
+        oxygen -= reduction * Time.deltaTime;
+    }
+
+    public void Death() 
+    {
+        Destroy(gameObject);
     }
 }

@@ -1,0 +1,81 @@
+/* Main container for the whole UI */
+.main-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1600px;
+    bottom: 20px;
+    width: 300px;
+    height: 350px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Container for the hearts */
+.hearts-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+   margin-top: 20px;
+}
+
+/* Style for each heart icon */
+.heart-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 5px;
+
+    -unity-background-image-tint-color: rgb(255, 0, 0); 
+    
+}
+
+/* Style for the empty heart */
+.heart-empty {
+    
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+/* Oxygen Tank Icon */
+.oxygen-tank-icon {
+    width: 60px;
+    height: 60px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    
+}
+
+/* Container for the fill bar */
+.oxygen-bar-container {
+    width: 30px;
+    height: 200px; 
+    border-color: rgba(255, 255, 255, 0.6);
+    border-width: 2px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: flex-end;
+}
+
+/* The dynamic fill bar element */
+.oxygen-fill-bar {
+    width: 100%;
+    height: 100%; 
+    background-color: rgb(50, 200, 255);
+    border-radius: 3px;
+    transition-duration: 0.5s; 
+    transition-property: height;
+}
+
+/* Percentage text label */
+.oxygen-percentage-label {
+    color: white;
+    font-size: 30px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    width: 60px;
+}

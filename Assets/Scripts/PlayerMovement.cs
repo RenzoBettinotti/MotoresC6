@@ -1,114 +1,63 @@
-using System.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float _speed = 3f;
-    [SerializeField] float _jumpforce = 3f;
-    float _rotationSpeed = 180f;
-    //[SerializeField] Transform _cameraTransform;
-    //[SerializeField] bool _shouldFaceMoveDirection;
+    [Header("Movement")]
+    [SerializeField] float walkSpeed = 3f;
+    [SerializeField] float runSpeed = 8f;
+    [SerializeField] float jumpForce = 5f;
 
+    [Header("Animation")]
+    [SerializeField] Animator animator;
+    [SerializeField] string speedParam = "Speed";
+    [SerializeField] string groundedParam = "Grounded";
+    [SerializeField] string jumpTrigger = "Jump";
+    [SerializeField] float animDamp = 0.1f;
 
-
-    bool _canJump = true;
-
-    float _moveH, _moveV;
-    Vector3 _movement;
-    Vector3 _moveDirection;
-    Vector3 _moveSideways;
-    float _rotationAmmount;
-    Quaternion _turnOffset;
     Rigidbody rb;
-    
+    bool isGrounded = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        if (animator == null) animator = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        // --- Input ---
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        bool run = Input.GetKey(KeyCode.LeftShift);
 
-        
+        float currentSpeed = run ? runSpeed : walkSpeed;
 
+        // Invertimos direcciones para que coincidan con WASD
+        Vector3 move = (transform.forward * -v) + (transform.right * -h);
+        if (move.sqrMagnitude > 1f) move.Normalize();
 
-        _moveH = Input.GetAxis("Horizontal");
-        _moveV = Input.GetAxis("Vertical");
-
-        _moveDirection = transform.forward * _moveV* _speed * Time.deltaTime;
-        _moveSideways = transform.right * _moveH* _speed * Time.deltaTime;
-        
-        
-
-
-        _movement = rb.position + _moveDirection + _moveSideways;
-        rb.MovePosition(_movement);
-
-        _rotationAmmount = _moveH * _rotationSpeed * Time.deltaTime;
-        if (_rotationAmmount <= -100)
+        // --- Movimiento ---
+        if (move.sqrMagnitude > 0f)
         {
-            _rotationSpeed = 0;
-        } else if (_rotationAmmount >= 100)
-        {
-            _rotationSpeed = 0;
-        }
-            _turnOffset = Quaternion.Euler(0, _rotationAmmount, 0);
-        rb.MoveRotation(rb.rotation * _turnOffset);
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            _speed = 8f;
-        }
-        else 
-        {
-            _speed = 3f;
+            rb.MovePosition(rb.position + move * currentSpeed * Time.fixedDeltaTime);
         }
 
-        if (Input.GetButton("Jump") && _canJump)
+        // --- Salto ---
+        if (Input.GetButton("Jump") && isGrounded)
         {
-            rb.linearVelocity += (Vector3.up * _jumpforce);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            isGrounded = false;
+            if (animator) animator.SetTrigger(jumpTrigger);
         }
 
-
-        //Vector3 forward = _cameraTransform.forward;
-        //Vector3 right = _cameraTransform.right;
-
-        //forward.y = 0;
-        //right.y = 0;
-
-        //forward.Normalize();
-        //right.Normalize();
-
-        //Vector3 lookDirection = forward * _moveV + right * _moveH;
-        //rb.MovePosition(lookDirection * _speed * Time.deltaTime);
-
-        //if (_shouldFaceMoveDirection && lookDirection.sqrMagnitude > 0.001f) 
-        //{
-        //    Quaternion toRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
-        //}
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Ground")
-        { 
-            _canJump = true;
+        // --- Par�metros de animaci�n ---
+        if (animator)
+        {
+            float planarSpeed = move.magnitude * currentSpeed;
+            animator.SetFloat(speedParam, planarSpeed, animDamp, Time.fixedDeltaTime);
+            animator.SetBool(groundedParam, isGrounded);
         }
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "Ground")
-        {
-            _canJump = false;
-        }
-    }
-
- 
 }

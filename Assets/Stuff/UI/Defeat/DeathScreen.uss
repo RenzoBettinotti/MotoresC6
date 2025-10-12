@@ -1,0 +1,31 @@
+
+.button-container {
+    position: absolute;
+    bottom: -1150px;
+    left: 955px;
+    width: 400px; 
+    height: 170px; 
+}
+
+
+.main-menu-button {
+    background-color: rgb(255, 165, 0);
+    color: white;
+    font-size: 20px;
+    -unity-font-style: bold;
+    border-radius: 10px;
+    transition-duration: 0.2s; 
+    transition-timing-function: ease-in-out;
+}
+
+
+.main-menu-button:hover {
+    background-color: rgb(255, 140, 0);
+    scale: 1.05;
+}
+
+
+.main-menu-button:active {
+    background-color: rgb(200, 100, 0); 
+    scale: 0.95;
+}
