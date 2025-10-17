@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Selected : MonoBehaviour
 {
-    LayerMask mask;
-    public float distancia = 1.5f;
+
+    [Header("Selection")]
+    [SerializeField] LayerMask mask;
+    [SerializeField] public float distancia = 1.5f;
     void Start()
     {
         mask = LayerMask.GetMask("RayCast Detect");

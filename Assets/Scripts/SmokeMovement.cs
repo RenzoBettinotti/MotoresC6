@@ -1,7 +1,8 @@
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
 public class SmokeMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] float _speed = 5.0f; 
     Rigidbody rb;
 
