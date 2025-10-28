@@ -180,9 +180,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fe7996d2ae587640a345aeb1dbf63de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3020498058220563565}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fe7996d2ae587640a345aeb1dbf63de, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5468136030158239398}
   m_SourcePrefab: {fileID: 100100000, guid: 4fe7996d2ae587640a345aeb1dbf63de, type: 3}
 --- !u!1 &2165978647812921026 stripped
 GameObject:
@@ -270,19 +267,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2165978647812921026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f07c64437be86f419b6ac5f0b5b7789, type: 3}
+  m_Script: {fileID: 11500000, guid: 165c74d604e83a04481a0a0628057e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoAnimacion: 2
---- !u!114 &5468136030158239398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165978647812921026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002c95286c69bc749926808efd1c0c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  civilesSalvados: 0

@@ -17,13 +17,13 @@ public class RescuesHUDManager : MonoBehaviour
     private void OnEnable()
     {
       
-        CivilianRescuer.OnCivilianRescued += IncrementRescuesCount;
+        ObjectoInteractivo.OnCivilianRescued += IncrementRescuesCount;
     }
 
     private void OnDisable()
     {
    
-        CivilianRescuer.OnCivilianRescued -= IncrementRescuesCount;
+        ObjectoInteractivo.OnCivilianRescued -= IncrementRescuesCount;
     }
 
     private void Start()

@@ -1,37 +1,14 @@
-using System.Collections;
 using UnityEngine;
+using System;
 
-public class ObjetoInteractivo : MonoBehaviour
+public class ObjectoInteractivo : MonoBehaviour
 {
-    private Animator anim;
-
-    [Header("Config")]
-    public float tiempoAnimacion = 2f; // duración de la animación antes de destruirse
-
-    void Start()
+    [SerializeField] int civilesSalvados;
+    public static event Action OnCivilianRescued;
+    public void SalvarCivil() 
     {
-        anim = GetComponent<Animator>();
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Activa la animación
-            anim.SetBool("Safe", true);
-
-            // Arranca la corrutina que espera y destruye el objeto
-            StartCoroutine(EsperarYDestruir());
-        }
-    }
-
-    IEnumerator EsperarYDestruir()
-    {
-        // Espera la duración de la animación
-        yield return new WaitForSeconds(tiempoAnimacion);
-
-
-        // Se destruye el civil
-        Destroy(gameObject);
+        OnCivilianRescued?.Invoke();
+        Destroy(gameObject,5f);
+        civilesSalvados++;
     }
 }
