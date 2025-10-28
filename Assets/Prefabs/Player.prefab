@@ -138,8 +138,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3225118102194895995}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212339, y: 0.000000010487269, z: -0.000000003335744, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.537169}
+  m_LocalRotation: {x: 0.15208961, y: 0.020807596, z: -0.0032025941, w: 0.9881425}
+  m_LocalPosition: {x: -0.40147573, y: 3.0070572, z: -10.313022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -454,7 +454,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.92395}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2579092199635277862}
@@ -555,5 +555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8026d15733d3b5f49aa2c8d060fd3622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
-  _jumpforce: 3
+  walkSpeed: 3
+  runSpeed: 8
+  jumpForce: 5
+  animator: {fileID: 0}
+  speedParam: Speed
+  groundedParam: Ground
+  jumpTrigger: Jump
+  animDamp: 0.1

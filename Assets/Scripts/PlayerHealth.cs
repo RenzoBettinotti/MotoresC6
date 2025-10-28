@@ -3,18 +3,19 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IHealth
 {
 
-    [Header("Salud")]
-    [SerializeField] float health;
-    [SerializeField] float oxygen;
-
-
+    float health;
+    float oxygen;
     public float Health { get { return health; } set { health = value; } }
     public float Oxygen { get { return oxygen; } set { oxygen = value; } }
     Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+
+        health = 3;
+        oxygen = 100;
+
+
     }
 
     void Update() 

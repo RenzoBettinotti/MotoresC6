@@ -1,122 +1,81 @@
-using System.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] float _speed = 3f;
-    [SerializeField] float _jumpforce = 3f;
-    [SerializeField] float _rotationSpeed = 180f;
+    [SerializeField] float walkSpeed = 3f;
+    [SerializeField] float runSpeed = 8f;
+    [SerializeField] float jumpForce = 5f;
+    [SerializeField] float rotationSpeed = 120f; // velocidad de giro en grados por segundo
 
     [Header("Animation")]
     [SerializeField] Animator animator;
     [SerializeField] string speedParam = "Speed";
-    [SerializeField] string groundedParam = "Grounded";
+    [SerializeField] string groundedParam = "Ground";
     [SerializeField] string jumpTrigger = "Jump";
     [SerializeField] float animDamp = 0.1f;
 
-    [Header("Ground Detection")]
-    [SerializeField] float _playerHeight = 2f;
-    [SerializeField] LayerMask _groundLayer;
-    [SerializeField] float _radioSphereCheck = 0.1f;
+    Rigidbody rb;
+    bool isGrounded = true;
 
-
-
-    bool _isGrounded = true;
-    float _moveH, _moveV;
-    Vector3 _movement;
-    Vector3 _moveDirection;
-    Vector3 _moveSideways;
-    float _rotationAmmount;
-    Quaternion _turnOffset;
-    private Rigidbody rb;
-    private Camera _mainCamera;
-
-    
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        _mainCamera = Camera.main;
         rb.freezeRotation = true;
         if (animator == null) animator = GetComponentInChildren<Animator>();
     }
 
-    
     void FixedUpdate()
     {
+        // --- Input ---
+        float h = Input.GetAxis("Horizontal"); // izquierda/derecha → rotación
+        float v = Input.GetAxis("Vertical");   // adelante/atrás → movimiento
+        bool run = Input.GetKey(KeyCode.LeftShift);
 
-        _isGrounded = Physics.CheckSphere(transform.position,_radioSphereCheck,_groundLayer);
+        float currentSpeed = run ? runSpeed : walkSpeed;
 
-        Inputs();
-        Movement();
-       
+        // --- Rotación (lenta tipo tanque) ---
+        if (Mathf.Abs(h) > 0.01f)
+        {
+            float turn = h * rotationSpeed * Time.fixedDeltaTime;
+            Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
+            rb.MoveRotation(rb.rotation * turnRotation);
+        }
+
+        // --- Movimiento hacia adelante/atrás ---
+        Vector3 move = transform.forward * -v;
+        if (move.sqrMagnitude > 0f)
+        {
+            rb.MovePosition(rb.position + move * currentSpeed * Time.fixedDeltaTime);
+        }
+
+        // --- Salto ---
+        if (Input.GetButton("Jump") && isGrounded)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            isGrounded = false;
+            if (animator) animator.SetTrigger(jumpTrigger);
+        }
+
+        // --- Animación ---
         if (animator)
         {
-            float planarSpeed = _movement.magnitude * _speed;
+            float planarSpeed = Mathf.Abs(v) * currentSpeed;
             animator.SetFloat(speedParam, planarSpeed, animDamp, Time.fixedDeltaTime);
-            animator.SetBool(groundedParam, _isGrounded);
+            animator.SetBool(groundedParam, isGrounded);
         }
-
-
-
     }
 
-    void Movement() 
+    void OnCollisionEnter(Collision collision)
     {
-        _moveH = Input.GetAxis("Horizontal");
-        _moveV = Input.GetAxis("Vertical");
-
-        _moveDirection = transform.forward * _moveV * _speed * Time.deltaTime;
-        _moveSideways = transform.right * _moveH * _speed * Time.deltaTime;
-
-
-
-
-        _movement = rb.position + _moveDirection + _moveSideways;
-        rb.MovePosition(_movement);
-
-
-        _rotationAmmount = _moveH * _rotationSpeed * Time.deltaTime;
+        if (collision.transform.CompareTag("Ground"))
+            isGrounded = true;
     }
-    void Inputs() 
+
+    void OnCollisionExit(Collision collision)
     {
-        if (_rotationAmmount <= -100)
-        {
-            _rotationSpeed = 0;
-        }
-        else if (_rotationAmmount >= 100)
-        {
-            _rotationSpeed = 0;
-        }
-        _turnOffset = Quaternion.Euler(0, _rotationAmmount, 0);
-        rb.MoveRotation(rb.rotation * _turnOffset);
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            _speed = 8f;
-        }
-        else
-        {
-            _speed = 3f;
-        }
-
-        if (Input.GetButton("Jump") && _isGrounded)
-        {
-            rb.linearVelocity += (Vector3.up * _jumpforce);
-        }
+        if (collision.transform.CompareTag("Ground"))
+            isGrounded = false;
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        if (_playerHeight > 0) 
-        {
-            Vector3 groundCheckPosition = transform.position;
-            Gizmos.DrawWireSphere(groundCheckPosition, _radioSphereCheck);
-        }
-    }
-
-
 }

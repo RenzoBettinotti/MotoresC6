@@ -1,8 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement class="victory-screen-root">
-        <ui:VisualElement class="button-container-victory">
-            <ui:Button name="MainMenuButton" text="Menu Principal" class="main-menu-button-victory" />
-        </ui:VisualElement>
-
-    </ui:VisualElement>
-</ui:UXML>

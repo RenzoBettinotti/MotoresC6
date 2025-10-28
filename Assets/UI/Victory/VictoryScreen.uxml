@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Victory/VictoryScreen.uss?fileID=7433441132597879392&amp;guid=1e4b4f4ccd11725408c246b56106548a&amp;type=3#VictoryScreen" />
+    <ui:VisualElement class="victory-screen-root" style="height: 1078px; background-image: url(&quot;project://database/Assets/UI/Victory/Fire%20Jumper%20Victory.jpg?fileID=2800000&amp;guid=9162d1333566a0045ab993e10a883ef0&amp;type=3#Fire Jumper Victory&quot;);">
+        <ui:VisualElement class="button-container-victory">
+            <ui:Button name="MainMenuButton" text="Menu Principal" class="main-menu-button-victory" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
