@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] float _speed = 3f;
-    [SerializeField] float _jumpforce = 3f;
+    [SerializeField] float _speed = 5f;
+    [SerializeField] float _jumpforce = 5f;
     [SerializeField] float _rotationSpeed = 180f;
 
     [Header("Animation")]
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Camera _mainCamera;
 
-    
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -35,27 +35,27 @@ public class PlayerMovement : MonoBehaviour
         if (animator == null) animator = GetComponentInChildren<Animator>();
     }
 
-    
+
     void FixedUpdate()
     {
 
-        
+
 
         Inputs();
         Movement();
-       
+
         if (animator)
         {
             float planarSpeed = _movement.magnitude * _speed;
             animator.SetFloat(speedParam, planarSpeed, animDamp, Time.fixedDeltaTime);
-            
+
         }
 
 
 
     }
 
-    void Movement() 
+    void Movement()
     {
         _moveH = Input.GetAxis("Horizontal");
         _moveV = Input.GetAxis("Vertical");
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rotationAmmount = _moveH * _rotationSpeed * Time.deltaTime;
     }
-    void Inputs() 
+    void Inputs()
     {
         if (_rotationAmmount <= -100)
         {
@@ -91,13 +91,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _speed = 3f;
+            _speed = 5f;
         }
 
-        if (Input.GetKey(KeyCode.Space) && _isGrounded)
+        if (Input.GetButtonUp("Jump") && _isGrounded)
         {
-            //rb.linearVelocity += (Vector3.up * _jumpforce);
-            rb.AddForce(Vector3.up * _jumpforce);
+            rb.linearVelocity += (Vector3.up * _jumpforce);
+
         }
     }
 
@@ -106,6 +106,14 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision) 
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = false;
         }
     }
 

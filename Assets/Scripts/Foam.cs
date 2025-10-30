@@ -12,22 +12,30 @@ public class Foam : MonoBehaviour
    
     void Awake()
     {
-        _rb.GetComponent<Rigidbody>();
-        Destroy(gameObject,_foamLifeTime);
+        _rb = GetComponent<Rigidbody>();
+
+        //Destroy(gameObject,_foamLifeTime);
     }
 
-    void Launch(Vector3 target)
+    public void Launch(Vector3 direction)
     {
-        Vector3 direction = (target - transform.position).normalized;
 
-        _rb.linearVelocity = direction * _foamSpeed;
+        _rb.linearVelocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        _rb.linearVelocity = direction.normalized * _foamSpeed;
+        transform.forward = direction.normalized;
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Fire")) 
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
+
+        //Destroy(gameObject);
+        ObjectPooler.Instance.ReturnToPool(this.gameObject);
     }
 }

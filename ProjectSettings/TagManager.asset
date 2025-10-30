@@ -9,6 +9,7 @@ TagManager:
   - Civil
   - Fire
   - Smoke
+  - Foam
   layers:
   - Default
   - TransparentFX
