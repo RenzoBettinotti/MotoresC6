@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using UnityEngine.SceneManagement; 
 
 public class RescuesHUDManager : MonoBehaviour
 {
- 
-    [SerializeField]
-    private int rescuesGoal = 5;
 
- 
+    [SerializeField]
+    private int rescuesGoal = 7; 
+
+
     private const string CivilianCountLabelName = "CivilianCountLabel";
 
     private Label civilianCountLabel;
@@ -16,19 +16,19 @@ public class RescuesHUDManager : MonoBehaviour
 
     private void OnEnable()
     {
-      
+
         ObjectoInteractivo.OnCivilianRescued += IncrementRescuesCount;
     }
 
     private void OnDisable()
     {
-   
+
         ObjectoInteractivo.OnCivilianRescued -= IncrementRescuesCount;
     }
 
     private void Start()
     {
-       
+
         var uiDocument = GetComponent<UIDocument>();
 
         if (uiDocument == null)
@@ -37,7 +37,7 @@ public class RescuesHUDManager : MonoBehaviour
             return;
         }
 
-       
+
         VisualElement root = uiDocument.rootVisualElement;
         civilianCountLabel = root.Q<Label>(CivilianCountLabelName);
 
@@ -47,11 +47,11 @@ public class RescuesHUDManager : MonoBehaviour
             return;
         }
 
-       
+
         UpdateCounterDisplay();
     }
 
-  
+
     private void IncrementRescuesCount()
     {
         rescuesCount++;
@@ -59,8 +59,10 @@ public class RescuesHUDManager : MonoBehaviour
 
         if (rescuesCount >= rescuesGoal)
         {
-            Debug.Log("All civilians rescued!");
-            
+            Debug.Log("¡Todos los civiles rescatados! Pasando a escena Victory.");
+
+            // CAMBIO 2: Lógica para cargar la escena
+            LoadVictoryScene();
         }
     }
 
@@ -70,5 +72,13 @@ public class RescuesHUDManager : MonoBehaviour
         {
             civilianCountLabel.text = $"{rescuesCount} / {rescuesGoal}";
         }
+    }
+
+    // NUEVO MÉTODO para cargar la escena de victoria
+    private void LoadVictoryScene()
+    {
+        // Asegúrate de que la escena "Victory" esté añadida a las
+        // "Scenes In Build" en File -> Build Settings...
+        SceneManager.LoadScene("Victory");
     }
 }
