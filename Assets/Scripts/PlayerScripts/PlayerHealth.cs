@@ -51,6 +51,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(float damage) 
     {
+        AudioManager.instance.DamageSFX();
         health -= damage *Time.deltaTime;
     }
     public void ReduceOxygen(float reduction)
@@ -60,6 +61,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
 
     public void Death() 
     {
-        Destroy(gameObject);
+        AudioManager.instance.DeathSFX();
+        Destroy(gameObject,5f);
     }
 }

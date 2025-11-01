@@ -8,6 +8,7 @@ public class ObjectoInteractivo : MonoBehaviour
     public void SalvarCivil() 
     {
         OnCivilianRescued?.Invoke();
+        AudioManager.instance.SaveSFX();
         Destroy(gameObject,5f);
         civilesSalvados++;
     }
