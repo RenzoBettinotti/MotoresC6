@@ -8,7 +8,7 @@ public class ObjectoInteractivo : MonoBehaviour
     public void SalvarCivil() 
     {
         OnCivilianRescued?.Invoke();
-        Destroy(gameObject,5f);
+        Destroy(gameObject);
         civilesSalvados++;
     }
 }

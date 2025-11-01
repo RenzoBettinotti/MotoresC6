@@ -28,17 +28,13 @@ public class ObjectPooler : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }
-
-     void Start()
-    {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        foreach (Pool pool in pools) 
+        foreach (Pool pool in pools)
         {
             Queue<GameObject> poolQueue = new Queue<GameObject>();
 
-            for (int i = 0; i < pool.size; i++) 
+            for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.transform.SetParent(transform, true);
@@ -51,8 +47,17 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
+     void Start()
+    {
+        foreach (var key in poolDictionary.Keys)
+        {
+            Debug.Log("Pool registrado: " + key);
+        }
+    }
+
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation) 
     {
+        
         if (!poolDictionary.ContainsKey(tag)) 
         {
             Debug.LogWarning("Pool con tag" + tag + "no existe");

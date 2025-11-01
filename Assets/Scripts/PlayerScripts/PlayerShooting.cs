@@ -8,9 +8,13 @@ public class PlayerShooting : MonoBehaviour
 
     ObjectPooler objectPooler;
 
-    void Awake()
+    private void Start()
     {
         objectPooler = ObjectPooler.Instance;
+    }
+    void Awake()
+    {
+        
     }
 
     // Update is called once per frame
@@ -26,10 +30,12 @@ public class PlayerShooting : MonoBehaviour
     }
     void Shoot()
     {
-       
-            GameObject f = objectPooler.SpawnFromPool("Foam", foamSpawner.position, foamSpawner.rotation);
+        
 
-            foam = f.GetComponent<Foam>();
+        GameObject f = objectPooler.SpawnFromPool("Foam", foamSpawner.transform.position, foamSpawner.transform.rotation);
+        Debug.Log("Spawned object: " + f);
+
+        foam = f.GetComponent<Foam>();
 
             if (foam != null)
             {
