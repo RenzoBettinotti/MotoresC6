@@ -1,57 +1,33 @@
-/* General styles for the main menu background */
-.main-menu-root {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(30, 30, 30); /* Dark, smoky background */
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
+.unity-text-element {
 }
 
-/* Style for the game title */
-.game-title {
-    font-size: 80px;
-    -unity-font-style: bold;
-    color: rgb(255, 165, 0); /* Bright orange for the text */
-    
-    /* Corrected properties for the outline effect */
-    -unity-text-outline-width: 5px;
-    -unity-text-outline-color: rgb(200, 50, 0); /* Dark red outline for a fiery look */
-    
-    -unity-text-align: middle-center;
-    margin-bottom: 50px;
+.unity-button {
+    background-image: url("project://database/Assets/UI/MainMenu/ou-removebg-preview.png?fileID=2800000&guid=1dbd86ce8984eca4dab065f7c2ca8b29&type=3#ou-removebg-preview");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 156% 294%;
+    height: 33%;
+    -unity-font-definition: url("project://database/Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Fonts/PerfectDOSVGA437.ttf?fileID=12800000&guid=74a5091d8707f334b9a5c31ef71a64ba&type=3#PerfectDOSVGA437");
+    font-size: 45px;
+    color: rgb(255, 231, 129);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    transition-duration: 5s;
+    transition-delay: 10s;
 }
 
-/* Container for the menu buttons */
-.button-container {
-    width: 300px;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-/* Base style for all menu buttons */
-.menu-button {
-    background-color: rgb(200, 50, 0); /* Dark red like a fire engine */
-    color: white;
-    font-size: 24px;
-    -unity-font-style: bold;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    height: 50px;
+.unity-button:hover {
+    scale: 1.1 1.1;
     transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
-}
-
-/* Hover effect for buttons */
-.menu-button:hover {
-    background-color: rgb(255, 165, 0); /* Bright orange on hover */
-    scale: 1.1;
-}
-
-/* Active (click) effect for buttons */
-.menu-button:active {
-    background-color: rgb(150, 40, 0);
-    scale: 0.95;
+    transition-delay: 0.2s;
 }
