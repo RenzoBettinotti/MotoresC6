@@ -47,13 +47,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-     void Start()
-    {
-        foreach (var key in poolDictionary.Keys)
-        {
-            Debug.Log("Pool registrado: " + key);
-        }
-    }
+    
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation) 
     {

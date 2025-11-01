@@ -14,7 +14,7 @@ public class Foam : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-        //Destroy(gameObject,_foamLifeTime);
+        
     }
 
     public void Launch(Vector3 direction)
@@ -35,7 +35,7 @@ public class Foam : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        //Destroy(gameObject);
+        
         ObjectPooler.Instance.ReturnToPool(this.gameObject);
     }
 }
