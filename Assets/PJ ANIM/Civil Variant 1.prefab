@@ -72,8 +72,31 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 173e1910c873d164a8e5b12ead9f9b37, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7306298015185019346, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
+    - {fileID: 3213644377708137359, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3027179950280390732, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 552223104001674520}
   m_SourcePrefab: {fileID: 100100000, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
+--- !u!1 &2252897247510887766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3027179950280390732, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
+  m_PrefabInstance: {fileID: 3837438777277728026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &552223104001674520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252897247510887766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165c74d604e83a04481a0a0628057e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  civilesSalvados: 0
