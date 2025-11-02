@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
         
 
         GameObject f = objectPooler.SpawnFromPool("Foam", foamSpawner.transform.position, foamSpawner.transform.rotation);
-        Debug.Log("Spawned object: " + f);
+        
 
         foam = f.GetComponent<Foam>();
 

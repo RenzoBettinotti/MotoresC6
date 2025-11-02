@@ -81,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3027179950280390732, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 552223104001674520}
+    - targetCorrespondingSourceObject: {fileID: 3027179950280390732, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2299049854115947215}
   m_SourcePrefab: {fileID: 100100000, guid: 07a276ba1e255cd42bf848494417fcf3, type: 3}
 --- !u!1 &2252897247510887766 stripped
 GameObject:
@@ -100,3 +103,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   civilesSalvados: 0
+--- !u!114 &2299049854115947215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252897247510887766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c321a5aa2c9ea647aedf93862a2090f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
